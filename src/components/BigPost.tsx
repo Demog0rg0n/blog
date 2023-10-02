@@ -3,7 +3,6 @@ import Evaluations from './Evaluations'
 import { PostType } from './Post'
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../redux/store'
-import { setPost } from '../redux/slices/postPageSlice'
 const image = require("../images/image.jpg")
 
 const BigPost: React.FC<PostType> = (post) => {
@@ -19,7 +18,7 @@ const BigPost: React.FC<PostType> = (post) => {
                     <Evaluations likes={post.likes} dislikes={post.dislikes} index={post.id} />
                 </div>
                 <p>{post.body}</p>
-                <Link onClick={() => dispatch(setPost(post))} className='bigPost__button button' to={"/posts/" + post.id}>Читать далее</Link>
+                <Link className='bigPost__button button' to={"/posts/" + post.id}>Читать далее</Link>
             </div>
         </div>
     )

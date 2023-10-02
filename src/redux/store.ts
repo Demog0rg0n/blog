@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import postsSlice from './slices/postsSlice'
-import postPageSlice from './slices/postPageSlice'
 
 export const store = configureStore({
     reducer: {
         postsSlice,
-        postPageSlice,
     },
 })
 

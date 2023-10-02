@@ -2,7 +2,6 @@ import React from 'react'
 import Evaluations from './Evaluations'
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../redux/store'
-import { setPost } from '../redux/slices/postPageSlice'
 const image = require("../images/image.jpg") 
 
 export type PostType = {
@@ -30,7 +29,7 @@ const Post: React.FC<PostType> = (post) => {
                 <h2 className="post__title h2">{post.title}</h2>
                 <div className="post__footer">
                     <Evaluations likes={post.likes} dislikes={post.dislikes} index={post.id}/>
-                    <Link onClick={() => dispatch(setPost(post))} className='button' to={"/posts/" + post.id}>Читать далее</Link>
+                    <Link className='button' to={"/posts/" + post.id}>Читать далее</Link>
                 </div>
             </div>
         </div>
