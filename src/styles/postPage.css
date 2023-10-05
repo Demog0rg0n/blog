@@ -1,0 +1,31 @@
+.postPage__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+.postPage__header a{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 24px;
+}
+.postPage__title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: center;
+    margin: 48px 0;
+}
+.postPage__content{
+    max-width: 848px;
+    margin: 0 auto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 144.444%;
+}
+.postPage__image{
+    width: 100%;
+    margin-bottom: 48px;
+}

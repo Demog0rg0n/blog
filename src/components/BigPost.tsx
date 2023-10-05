@@ -2,12 +2,9 @@ import React from 'react'
 import Evaluations from './Evaluations'
 import { PostType } from './Post'
 import { Link } from 'react-router-dom'
-import { useAppDispatch } from '../redux/store'
-const image = require("../images/image.jpg")
+import image from "../images/image.jpg" 
 
 const BigPost: React.FC<PostType> = (post) => {
-
-    const dispatch = useAppDispatch()
 
     return (
         <div className='bigPost'>

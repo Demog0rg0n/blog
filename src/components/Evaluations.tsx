@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { setDislike, setLike } from '../redux/slices/postsSlice'
-import { useAppDispatch } from '../redux/store'
+import React from 'react'
+import Like from './Like'
+import Dislike from './Dislike'
 
 type EvaluationsProps = {
     index: number
@@ -16,32 +16,14 @@ type EvaluationsProps = {
 
 const Evaluations: React.FC<EvaluationsProps> = ({likes, dislikes, index}) => {
 
-    const dispatch = useAppDispatch()
-
     return (
         <div className='evaluations'>
-            <div className="likes evaluations__item" onClick={() => dispatch(setLike(index))}>
-                {
-                    likes.state? 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M2.66666 26.6667H5.33332C6.06666 26.6667 6.66666 26.0667 6.66666 25.3333V13.3333C6.66666 12.6 6.06666 12 5.33332 12H2.66666V26.6667ZM29.1067 17.1733C29.2533 16.84 29.3333 16.48 29.3333 16.1067V14.6667C29.3333 13.2 28.1333 12 26.6667 12H19.3333L20.56 5.80001C20.6267 5.50667 20.5867 5.18667 20.4533 4.92001C20.1467 4.32001 19.76 3.77334 19.28 3.29334L18.6667 2.66667L10.12 11.2133C9.61332 11.72 9.33332 12.4 9.33332 13.1067V23.56C9.33332 25.2667 10.7333 26.6667 12.4533 26.6667H23.2667C24.2 26.6667 25.08 26.1733 25.56 25.3733L29.1067 17.1733Z" fill="#219653" fillOpacity="1"/>
-                    </svg>:
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M2.66666 26.6667H5.33332C6.06666 26.6667 6.66666 26.0667 6.66666 25.3333V13.3333C6.66666 12.6 6.06666 12 5.33332 12H2.66666V26.6667ZM29.1067 17.1733C29.2533 16.84 29.3333 16.48 29.3333 16.1067V14.6667C29.3333 13.2 28.1333 12 26.6667 12H19.3333L20.56 5.80001C20.6267 5.50667 20.5867 5.18667 20.4533 4.92001C20.1467 4.32001 19.76 3.77334 19.28 3.29334L18.6667 2.66667L10.12 11.2133C9.61332 11.72 9.33332 12.4 9.33332 13.1067V23.56C9.33332 25.2667 10.7333 26.6667 12.4533 26.6667H23.2667C24.2 26.6667 25.08 26.1733 25.56 25.3733L29.1067 17.1733Z" fill="#3A3541" fillOpacity="0.54"/>
-                    </svg>
-                }
+            <div className="likes evaluations__item">
+                <Like id={index} state={likes.state}/>
                 <span>{likes.counter}</span>
             </div>
-            <div className="dislikes evaluations__item" onClick={() => dispatch(setDislike(index))}>
-                {
-                    dislikes.state?
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M2.66665 5.33333H5.33331C6.06665 5.33333 6.66665 5.93333 6.66665 6.66666V18.6667C6.66665 19.4 6.06665 20 5.33331 20H2.66665V5.33333ZM29.1066 14.8267C29.2533 15.16 29.3333 15.52 29.3333 15.8933V17.3333C29.3333 18.8 28.1333 20 26.6666 20H19.3333L20.56 26.2C20.6266 26.4933 20.5866 26.8133 20.4533 27.08C20.1466 27.68 19.76 28.2267 19.28 28.7067L18.6666 29.3333L10.12 20.7867C9.61331 20.28 9.33331 19.6 9.33331 18.8933V8.45333C9.33331 6.73333 10.7333 5.33333 12.4533 5.33333H23.2533C24.2 5.33333 25.0666 5.82666 25.5466 6.62666L29.1066 14.8267Z" fill="#EB5757" fillOpacity="1"/>
-                    </svg>:
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M2.66665 5.33333H5.33331C6.06665 5.33333 6.66665 5.93333 6.66665 6.66666V18.6667C6.66665 19.4 6.06665 20 5.33331 20H2.66665V5.33333ZM29.1066 14.8267C29.2533 15.16 29.3333 15.52 29.3333 15.8933V17.3333C29.3333 18.8 28.1333 20 26.6666 20H19.3333L20.56 26.2C20.6266 26.4933 20.5866 26.8133 20.4533 27.08C20.1466 27.68 19.76 28.2267 19.28 28.7067L18.6666 29.3333L10.12 20.7867C9.61331 20.28 9.33331 19.6 9.33331 18.8933V8.45333C9.33331 6.73333 10.7333 5.33333 12.4533 5.33333H23.2533C24.2 5.33333 25.0666 5.82666 25.5466 6.62666L29.1066 14.8267Z" fill="#3A3541" fillOpacity="0.54"/>
-                    </svg>
-                }
+            <div className="dislikes evaluations__item">
+                <Dislike id={index} state={dislikes.state}/>
                 <span>{dislikes.counter}</span>
             </div>
         </div>

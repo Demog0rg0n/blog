@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import "./App.css"
+import "./styles/index.css"
 import { Route, Routes } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import PostPage from './pages/PostPage'
@@ -10,8 +10,8 @@ const App: React.FC = () => {
 
     const dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(fetchPosts())
-    }, [])
+        dispatch(fetchPosts(""))
+    }, [dispatch])
 
     return (
         <div className='App'>

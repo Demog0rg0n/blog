@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+  
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #0A0A0A;
+}
+.h1{
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 113.333%;
+}
+.h2{
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 114.286%;
+}
+  
+.App{
+    padding: 64px 0;
+}
+  
+.container{
+    width: 100%;
+    max-width: 1170px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+  
+input:focus{
+    outline: none;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+  
+.button{
+    padding: 11px 24px;
+    font-size: 16px;
+    border-radius: 60px;
+    border: 2px solid #0A0A0A;
+    height: 45px;
+    line-height: 19px;
+}
+
+.notFound .h1{
+    text-align: center;
+}
+
+.like-active{
+    fill: #219653;
+    fill-opacity: 1;
+}
+.dislike-active{
+    fill: #EB5757;
+    fill-opacity: 1;
+}

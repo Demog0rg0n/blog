@@ -1,14 +1,26 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import { fetchPosts } from '../redux/slices/postsSlice'
 import { useAppDispatch } from '../redux/store'
+
+const debounce = (fn: Function, ms: number) => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    return function (this: any, ...args: any[]) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => fn.apply(this, args), ms);
+    };
+};
 
 const Search = () => {
 
     const [search, setSearch] = useState("")
     const dispatch = useAppDispatch()
+
+    const debouncedSearching = debounce(function(value: string) {
+        dispatch(fetchPosts(value)) 
+    }, 500)
     function searching(value: string) {
         setSearch(value)
-        dispatch(fetchPosts(value))
+        debouncedSearching(value)
     }
 
     return (

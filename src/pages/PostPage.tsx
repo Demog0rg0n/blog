@@ -1,21 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import BackArrow from '../components/BackArrow'
 import Evaluations from '../components/Evaluations'
 import NotFound from './NotFound'
-import axios from 'axios'
-import { PostType } from '../components/Post'
 import { useAppSelector } from '../redux/store'
-const image = require("../images/image.jpg") 
+import image from "../images/image.jpg"
+import "../styles/postPage.css"
+import { PostType } from '../components/Post'
+import { addEvaluationsToPosts } from '../redux/slices/postsSlice'
 
-const PostPage = () => {
+
+
+const PostPage: React.FC = () => {
     const id = Number(useParams().id)
+    const [post, setPost] = useState<PostType | undefined>()
 
-    const post = useAppSelector(state => state.postsSlice.posts).find(item => {
+    async function fetchPost() {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts/" + id)
+        const post = await response.json()
+        const updatedPost = addEvaluationsToPosts([post])
+        setPost(updatedPost[0])
+    }
+    let data = useAppSelector(state => state.postsSlice.posts).find(item => {
         if(item.id === id) {
             return true
+        } else {
+            return false
         }
     })
+    if(data && !post) {
+        setPost(data)
+    } else if(!data && !post) {
+        fetchPost()
+    }
 
     return (
         post?

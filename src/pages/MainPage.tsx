@@ -1,13 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Posts from '../components/Posts'
 import Search from '../components/Search'
+import "../styles/mainPage.css"
 
 const MainPage: React.FC = () => {
-
-    function searching(value: string) {
-        // setSearch(value)
-    }
-
     return (
         <div className='mainPage'>
             <div className="mainPage__container container">

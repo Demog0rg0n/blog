@@ -1,20 +1,18 @@
-import React, { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../redux/store'
+import React from 'react'
+import { useAppSelector } from '../redux/store'
 import Post from './Post'
 import BigPost from './BigPost'
-import { fetchPosts } from '../redux/slices/postsSlice'
 
 const Posts: React.FC = () => {
 
-    const dispatch = useAppDispatch()
     const { posts } = useAppSelector(state => state.postsSlice)
 
-    const column1 = posts.slice(1).filter(function(element, index, array) {
+    const column1 = posts.slice(1).filter(function(element, index) {
         return (index % 2 === 0);
     });
     
-    const column2 = posts.slice(1).filter(function(element, index, array) {
-        return (index % 2 != 0);
+    const column2 = posts.slice(1).filter(function(element, index) {
+        return (index % 2 !== 0);
     });
 
     return (
@@ -23,11 +21,6 @@ const Posts: React.FC = () => {
                 posts.length &&
                 <BigPost {...posts[0]}/>
             }
-            {/* {
-                posts.slice(1).map(post => (
-                    <Post {...post}/>
-                ))
-            } */}
             <div className="column">
                 {
                     column1.map(post => (
